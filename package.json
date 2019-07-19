@@ -1,0 +1,36 @@
+{
+  "name": "react-easy-boilerplate",
+  "version": "0.1.0",
+  "description": "choose between some boiler plates that is intresting for you",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "react-easy-boilerplate": "./bin/index.js"
+  },
+  "preferGlobal": true,
+  "author": "nima.2004hkh@gmail.com",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "reactjs",
+    "boilerplate",
+    "react boilerplate",
+    "react ssr",
+    "react material-ui",
+    "material-ui",
+    "jss",
+    "redux",
+    "react context api",
+    "postcss"
+  ],
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "child_process": "^1.0.2",
+    "cli-progress": "^2.1.1",
+    "fs": "0.0.1-security",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^6.5.0"
+  }
+}
