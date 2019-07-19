@@ -25,6 +25,10 @@
     "react context api",
     "postcss"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nimahkh/react-easy-boilerplates.git"
+  },
   "dependencies": {
     "chalk": "^2.4.2",
     "child_process": "^1.0.2",
