@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start:prod": "NODE_ENV=production node ./express/production.js",
+    "start:prod": "cross-env NODE_ENV=production node ./express/production.js",
     "start:dev": "babel-node ./node_modules/webpack-dev-server/bin/webpack-dev-server --open",
-    "build:dev": "NODE_ENV=development node ./express/development.js",
-    "build:prod": "NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
+    "build:dev": "cross-env NODE_ENV=development node ./express/development.js",
+    "build:prod": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js --progress --profile --colors",
     "webpack": "babel-node ./node_modules/webpack/bin/webpack"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.1",
+    "cross-env": "^5.2.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
