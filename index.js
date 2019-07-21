@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {installDependencies, createDirectoryContents, CURR_DIR, Questions} = require('./utils/helpers')
+const {installDependencies, firstRun, createDirectoryContents, CURR_DIR, Questions} = require('./utils/helpers')
 const _cliProgress = require('cli-progress');
 const _colors = require('colors');
 
@@ -15,6 +15,7 @@ const bar = new _cliProgress.Bar({
 }, _cliProgress.Presets.shades_grey);
 
 function run () {
+    firstRun();
     inquirer
         .prompt(Questions)
         .then(answers => {
