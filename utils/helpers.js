@@ -2,10 +2,15 @@ const inquirer = require('inquirer');
 const CURR_DIR = process.cwd();
 const util = require('util');
 const execFile = util.promisify(require('child_process').execFile);
-const {spawn} = require('child_process')
+const figlet = require('figlet')
+const clear=require('clear')
 const fs = require('fs-extra')
 const chalk = require('chalk');
 
+/**
+ * questions
+ * @type {*[]}
+ */
 const Questions = [
     {
         type: 'input',
@@ -63,15 +68,36 @@ const Questions = [
     }
 ];
 
-
+//warning style
 function warning(text) {
     return chalk.yellow(text)
 }
 
+//disable style
 function disable(text){
     return chalk.grey(text)
 }
 
+/**
+ * clear and run program
+ */
+function firstRun(){
+    clear();
+    console.log(
+        chalk.blue(
+            figlet.textSync('R-E-B', {
+                horizontalLayout: 'full'
+            })
+        )
+    );
+}
+
+/**
+ * create directory and copy skeleton into project folder
+ * @param templatePath
+ * @param newProjectPath
+ * @param projectName
+ */
 function createDirectoryContents(templatePath, newProjectPath, projectName) {
     const filesToCreate = fs.readdirSync(templatePath);
 
@@ -100,6 +126,10 @@ function createDirectoryContents(templatePath, newProjectPath, projectName) {
     });
 }
 
+/**
+ * get version of node
+ * @returns {Promise<*>}
+ */
 async function getVersion() {
     const {stdout} = await execFile('node', ['--version']);
     return stdout;
@@ -119,8 +149,8 @@ async function installDependencies(project_name) {
 module.exports = {
     createDirectoryContents,
     CURR_DIR,
-    getVersion,
     installDependencies,
     changeDirectory,
-    Questions
+    Questions,
+    firstRun
 }
