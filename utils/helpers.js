@@ -2,9 +2,10 @@ const inquirer = require('inquirer');
 const CURR_DIR = process.cwd();
 const util = require('util');
 const execFile = util.promisify(require('child_process').execFile);
-const clear=require('clear')
+const clear = require('clear')
 const fs = require('fs-extra')
 const chalk = require('chalk');
+const editJsonFile = require("edit-json-file");
 
 /**
  * questions
@@ -29,7 +30,7 @@ const Questions = [
         message: 'choose your css library',
         choices: [
             {
-                name:'jss',
+                name: 'jss',
             },
             new inquirer.Separator(),
             {
@@ -72,14 +73,14 @@ function warning(text) {
 }
 
 //disable style
-function disable(text){
+function disable(text) {
     return chalk.grey(text)
 }
 
 /**
  * clear and run program
  */
-function firstRun(){
+function firstRun() {
     clear();
     console.log(
         chalk.blue('React Easy Boilerplate \n')
@@ -103,23 +104,20 @@ function createDirectoryContents(templatePath, newProjectPath, projectName) {
 
         if (stats.isFile()) {
             let contents = fs.readFileSync(origFilePath, 'utf8');
-            var isWin = process.platform === "win32";
+
             if (file === "package.json") {
-                contents = JSON.parse(contents);
-                // if user OS is windows , we have to add 'set' into first of NODE_ENV commands
-                if(isWin){
-                    contents.scripts['build:dev']='set ' + contents.scripts['build:dev']
-                    contents.scripts['start:prod']='set ' + contents.scripts['start:prod']
-                    contents.scripts['build:prod']='set ' + contents.scripts['build:prod']
-                }
+                let jsonPackage = editJsonFile(`${templatePath}/${file}`);
 
                 //change project name
+                jsonPackage.set("name", projectName);
 
-                contents.name = projectName
-                contents = JSON.stringify(contents, null, 2)
+                jsonPackage.save();
+
             }
-            const writePath = `${newProjectPath}/${file}`;
-            fs.writeFileSync(writePath, contents, 'utf8');
+                const writePath = `${newProjectPath}/${file}`;
+                fs.writeFileSync(writePath, contents, 'utf8');
+
+
         }
 
         if (stats.isDirectory()) {
@@ -145,7 +143,7 @@ function changeDirectory(directory) {
 
 async function installDependencies(project_name) {
     changeDirectory(project_name);
-    const { stdout } = await execFile('npm', ['install']);
+    const {stdout} = await execFile('npm', ['install']);
 
     return stdout
 }
