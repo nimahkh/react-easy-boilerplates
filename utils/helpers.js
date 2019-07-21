@@ -109,8 +109,18 @@ function createDirectoryContents(templatePath, newProjectPath, projectName) {
 
         if (stats.isFile()) {
             let contents = fs.readFileSync(origFilePath, 'utf8');
+            var isWin = process.platform === "win32";
             if (file === "package.json") {
                 contents = JSON.parse(contents);
+                // if user OS is windows , we have to add 'set' into first of NODE_ENV commands
+                if(isWin){
+                    contents.scripts['build:dev']='set ' + contents.scripts['build:dev']
+                    contents.scripts['start:prod']='set ' + contents.scripts['start:prod']
+                    contents.scripts['build:prod']='set ' + contents.scripts['build:prod']
+                }
+
+                //change project name
+
                 contents.name = projectName
                 contents = JSON.stringify(contents, null, 2)
             }
