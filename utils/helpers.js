@@ -33,12 +33,11 @@ const Questions = [
             },
             new inquirer.Separator(),
             {
-                name: disable('material-ui'),
-                disabled: warning("Coming soon")
+                name: 'postcss',
             },
             new inquirer.Separator(),
             {
-                name: disable('postcss'),
+                name: disable('material-ui'),
                 disabled: warning("Coming soon")
             },
             new inquirer.Separator(),
