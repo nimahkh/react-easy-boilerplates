@@ -2,7 +2,6 @@ const inquirer = require('inquirer');
 const CURR_DIR = process.cwd();
 const util = require('util');
 const execFile = util.promisify(require('child_process').execFile);
-const figlet = require('figlet')
 const clear=require('clear')
 const fs = require('fs-extra')
 const chalk = require('chalk');
@@ -84,11 +83,7 @@ function disable(text){
 function firstRun(){
     clear();
     console.log(
-        chalk.blue(
-            figlet.textSync('R-E-B', {
-                horizontalLayout: 'full'
-            })
-        )
+        chalk.blue('React Easy Boilerplate \n')
     );
 }
 
