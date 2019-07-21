@@ -1,6 +1,6 @@
 {
   "name": "react-easy-boilerplate",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "choose between some boiler plates that is intresting for you",
   "main": "index.js",
   "scripts": {
