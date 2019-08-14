@@ -39,7 +39,6 @@ const Questions = [
             new inquirer.Separator(),
             {
                 name: disable('material-ui'),
-                disabled: warning("Coming soon")
             },
             new inquirer.Separator(),
             {
