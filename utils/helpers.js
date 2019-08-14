@@ -38,7 +38,7 @@ const Questions = [
             },
             new inquirer.Separator(),
             {
-                name: disable('material-ui'),
+                name: 'material-ui',
             },
             new inquirer.Separator(),
             {
