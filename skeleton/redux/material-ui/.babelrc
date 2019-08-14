@@ -1,0 +1,11 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-class-properties",
+    "dynamic-import-node"
+  ]
+}
