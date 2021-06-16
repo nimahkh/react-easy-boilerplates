@@ -49,7 +49,7 @@
     "isomorphic-style-loader": "^5.0.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "redux": "^4.0.1",
-    "postcss": "^7.0.16",
+    "postcss": "^7.0.36",
     "postcss-apply": "^0.12.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-custom-properties": "^8.0.10",
